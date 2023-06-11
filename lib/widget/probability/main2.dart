@@ -14,6 +14,10 @@ class Probability extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(subject.name),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add_a_photo),
+      ),
       body: ListView.builder(
           itemCount: subject.questions?.length,
           itemBuilder: (BuildContext context, int index) {

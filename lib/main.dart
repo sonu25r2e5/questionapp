@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -35,6 +36,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List add = [
+    const Icon(
+      Icons.add,
+      color: Colors.redAccent,
+    ),
+    const Icon(Icons.abc),
+    const Icon(Icons.delete),
+    const Icon(Icons.photo),
+    const Icon(Icons.access_alarm),
+  ];
   final List<Subject> _items = [
     Subject('Probability & Statistical III / I', 'assets/photos/tajmahal.jpg',
         'lib/widget/main2.dart',
@@ -61,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'assets/photos/tajmahal.jpg',
       'hi',
       questions: [
-        Question(2076, '2080', 'assets/subject/cg/2080cg.pdf'),
+        Question(2076, '2080 Baishakh', 'assets/subject/cg/2080cg.pdf'),
         Question(2076, '2079 Kartik', 'assets/subject/cg/2079.pdf'),
         Question(2076, '2078 Kartik', 'assets/subject/cg/2078Kartik.pdf'),
         Question(2076, '2076 Ashwin', 'assets/subject/cg/2076Aswin.pdf'),
@@ -85,11 +96,33 @@ class _MyHomePageState extends State<MyHomePage> {
       'assets/photos/tajmahal.jpg',
       'ki',
       questions: [
-        Question(2076, '2076 Chaitra', 'assets/subject/inII/dc2076Chaitra.pdf'),
+        Question(2076, '20780 Baishakh', 'assets/subject/inII/in2080.pdf'),
+        Question(2076, '2079 Bhadra', 'assets/subject/inII/in2079.pdf'),
+        Question(2076, '2078 Bhadra', 'assets/subject/inII/in2078.pdf'),
+        Question(2076, '2076 Kartik', 'assets/subject/inII/in2078Kartik.pdf'),
+        Question(2076, '2076 Ashwin', 'assets/subject/inII/in2076.pdf'),
+        Question(2076, '2075 Chaitra', 'assets/subject/inII/in2075.pdf'),
       ],
     ),
-    Subject('Software Engineering', 'assets/photos/tajmahal.jpg', 'ii'),
-    Subject('Communication English', 'assets/photos/tajmahal.jpg', 'i'),
+    Subject('Software Engineering', 'assets/photos/tajmahal.jpg', 'ii',
+        questions: [
+          Question(2076, '2080 Chaitra', 'assets/subject/se/se2080.pdf'),
+          Question(2076, '2079 Chaitra', 'assets/subject/se/se2079.pdf'),
+          Question(2076, '2078 Bhadra', 'assets/subject/se/se2078Bhadra.pdf'),
+          Question(2076, '2076 Aswin', 'assets/subject/se/se2076Aswin.pdf'),
+          Question(2076, '2076 Chaitra', 'assets/subject/se/se2076.pdf'),
+        ]),
+    Subject(
+      'Communication English',
+      'assets/photos/tajmahal.jpg',
+      'i',
+      questions: [
+        Question(2076, '2080 Baisahakh', 'assets/subject/ce/en2080.pdf'),
+        Question(2076, '2079 Baisahakh', 'assets/subject/ce/en2079.pdf'),
+        Question(2076, '2078 Kartik', 'assets/subject/ce/en2078kartik.pdf'),
+        Question(2076, '2078 Bhadra', 'assets/subject/ce/en2078Bhadra.pdf'),
+      ],
+    ),
   ];
 
   @override
@@ -107,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     bottomLeft: Radius.circular(90),
                     bottomRight: Radius.circular(90)),
               ),
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: MediaQuery.of(context).size.height * 0.15,
               width: MediaQuery.of(context).size.width * 1,
               child: const Center(
                 child: Text(
@@ -121,12 +154,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.2,
+            top: MediaQuery.of(context).size.height * 0.18,
             child: Container(
               decoration: BoxDecoration(
+                color: Colors.black,
                 borderRadius: BorderRadius.circular(20),
               ),
-              height: MediaQuery.of(context).size.height * 1,
+              height: MediaQuery.of(context).size.height * 0.7,
               width: MediaQuery.of(context).size.width * 1,
               child: GridView.builder(
                   padding:
@@ -163,7 +197,46 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   }),
             ),
-          )
+          ),
+          Positioned(
+            bottom: MediaQuery.of(context).size.height * 0.01,
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.09,
+              width: MediaQuery.of(context).size.width * 1,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 7, 119, 255),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(90),
+                    topRight: Radius.circular(90)),
+              ),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.red.withOpacity(0.6),
+                    ),
+                    width: 300,
+                    child: GridView.builder(
+                        itemCount: 5,
+                        scrollDirection: Axis.horizontal,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisSpacing: 50,
+                          mainAxisSpacing: 25,
+                          crossAxisCount: 1,
+                        ),
+                        itemBuilder: (ctx, index) {
+                          return Card(
+                            child: add[index],
+                          );
+                        }),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
