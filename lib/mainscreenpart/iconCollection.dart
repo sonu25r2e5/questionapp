@@ -41,7 +41,7 @@ class Part1 extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (ctx) => ImageToPdfList(),
+              builder: (ctx) => const ImageToPdfList(),
             ),
           );
         },
