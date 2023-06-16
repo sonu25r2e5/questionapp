@@ -11,7 +11,7 @@ class Probability extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(subject.name),
       ),
       floatingActionButton: FloatingActionButton(
@@ -26,7 +26,7 @@ class Probability extends StatelessWidget {
               color: Colors.white,
               margin: const EdgeInsets.all(12),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(50),
               ),
               child: ListTile(
                 contentPadding: const EdgeInsets.all(8),

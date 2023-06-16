@@ -15,6 +15,7 @@ class _NotepageState extends State<Notepage> {
       appBar: AppBar(
         actions: const [],
         title: const Text('Note'),
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: const Column(
         children: [

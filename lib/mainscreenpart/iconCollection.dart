@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:studentapp/screeens/note.dart';
+import 'package:studentapp/timer/timer.dart';
 import 'package:studentapp/screeens/planner.dart';
 
 class Part1 extends StatelessWidget {
@@ -37,7 +38,13 @@ class Part1 extends StatelessWidget {
           Icons.call,
           color: Colors.redAccent,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (ctx) => ImageToPdfList(),
+            ),
+          );
+        },
       ),
       IconButton(
         icon: const Icon(Icons.sports_gymnastics),

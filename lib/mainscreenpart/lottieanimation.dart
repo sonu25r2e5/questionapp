@@ -14,7 +14,7 @@ class _LottieScreen2State extends State<LottieScreen2> {
     return Center(
       child: Padding(
           padding: const EdgeInsets.all(25),
-          child: LottieBuilder.asset("assets/ase.json")),
+          child: LottieBuilder.asset("assets/ade.json")),
     );
   }
 }

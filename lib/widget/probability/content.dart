@@ -13,6 +13,7 @@ class Imagee extends StatelessWidget {
         title: Text(qse.yearName),
       ),
       body: PDF(
+        
         enableSwipe: true,
         onError: (error) {
           print(

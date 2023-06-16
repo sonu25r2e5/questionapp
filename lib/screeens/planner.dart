@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:studentapp/todo/todolist.dart';
 import 'package:studentapp/todolist/todo.dart';
 
@@ -10,27 +11,56 @@ class Planner extends StatefulWidget {
 }
 
 class _PlannerState extends State<Planner> {
+  @override
+  void initState() {
+    super.initState();
+    _initializeState();
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
+  final cacheKey = 'todokeys';
+
+  void _initializeState() {
+    setState(() {
+      _todos.clear();
+      _todos.addAll(cacheTodos);
+    });
+  }
+
+  List<Todo> get cacheTodos =>
+      (box.read<List>(cacheKey) ?? []).map((e) => Todo.fromMap(e)).toList();
+
+  final box = GetStorage();
+
   final List<Todo> _todos = <Todo>[];
+
   final TextEditingController _textEditingController = TextEditingController();
 
   void _handleTodoChange(Todo todo) {
-    setState(() {
-      todo.completed = !todo.completed;
-    });
+    todo.completed = !todo.completed;
+    _updateCache();
+  }
+
+  void _updateCache() {
+    box.write(cacheKey, _todos.map((e) => e.toMap()).toList());
+    setState(() {});
   }
 
   void _deleteTodo(Todo todo) {
-    setState(() {
-      _todos.removeWhere((element) => element.name == todo.name);
-    });
+    _todos.removeWhere((element) => element.name == todo.name);
+    _updateCache();
   }
 
   void _addTodoItem(String name) {
-    setState(() {
-      _todos.add(
-        Todo(name, false),   
-      );
-    });
+    final todo = Todo(name, false);
+    _todos.add(todo);
+    _updateCache();
+
     _textEditingController.clear();
   }
 
@@ -42,14 +72,16 @@ class _PlannerState extends State<Planner> {
       context: context,
       builder: (BuildContext context) {
         final ButtonStyle style = ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue.shade100,
-            textStyle: const TextStyle(
-              fontSize: 20,
-            ));
+          backgroundColor: Colors.blue.shade100,
+          textStyle: const TextStyle(
+            fontSize: 20,
+          ),
+        );
         return AlertDialog(
           title: const Text('Add your daily task'),
           content: TextField(
             controller: _textEditingController,
+            autofocus: true,
           ),
           actions: [
             OutlinedButton(
@@ -85,6 +117,7 @@ class _PlannerState extends State<Planner> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: const Text('To do list'),
       ),
       body: ListView(

@@ -13,8 +13,7 @@ class Part2 extends StatefulWidget {
 
 class _Part2State extends State<Part2> {
   final List<Subject> _items = [
-    Subject('Probability & Statistical III / I', 'assets/photos/tajmahal.jpg',
-        'lib/widget/main2.dart',
+    Subject('P & S II', 'assets/photos/tajmahal.jpg', 'lib/widget/main2.dart',
         questions: [
           Question(2076, '2076 Chaitra', 'assets/yearwise/2076Chaitra.pdf'),
           Question(2076, '2076 Ashwin', 'assets/yearwise/2076Ashwin.pdf'),
@@ -92,43 +91,54 @@ class _Part2State extends State<Part2> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      height: MediaQuery.of(context).size.height * 0.2,
-      width: MediaQuery.of(context).size.width * 1,
-      child: GridView.builder(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          scrollDirection: Axis.horizontal,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisSpacing: 21, mainAxisSpacing: 2, crossAxisCount: 1),
-          itemCount: _items.length,
-          itemBuilder: (ctx, index) {
-            return Card(
-              child: GridTile(
-                footer: Container(
-                  height: 20,
-                  decoration: const BoxDecoration(
-                    color: Colors.blue,
-                  ),
-                  child: Text(_items[index].name),
-                ),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (ctx) => Probability(subject: _items[index]),
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          // color: Theme.of(context).colorScheme.primary,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        height: MediaQuery.of(context).size.height * 1,
+        width: MediaQuery.of(context).size.width * 1,
+        child: GridView.builder(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            scrollDirection: Axis.vertical,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisSpacing: 1, mainAxisSpacing: 2, crossAxisCount: 2),
+            itemCount: _items.length,
+            itemBuilder: (ctx, index) {
+              return Card(
+                child: GridTile(
+                  footer: Container(
+                    padding: const EdgeInsets.all(1),
+                    height: 20,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    child: Text(
+                      _items[index].name,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
                       ),
-                    );
-                  },
-                  child: Image.asset(_items[index].url),
+                    ),
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (ctx) => Probability(subject: _items[index]),
+                        ),
+                      );
+                    },
+                    child: Image.asset(_items[index].url),
+                  ),
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+      ),
     );
   }
 }

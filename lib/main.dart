@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'mainscreenpart/iconCollection.dart';
 import 'mainscreenpart/lottieanimation.dart';
 
-void main() {
+void main() async {
+  // open a box
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+
   runApp(const MyApp());
 }
 
@@ -16,7 +21,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF0F82CE),
+        ),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -35,9 +42,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: Drawer(
+        child: ListView(
+          children: const [
+            DrawerHeader(
+              child: Text('hearer'),
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: ClipRRect(
@@ -51,20 +69,52 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      backgroundColor: Colors.white.withAlpha(55),
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: Stack(
         children: [
           Positioned(
-            top: 0,
+            top: 30,
+            left: 20,
+            height: 50,
+            width: 50,
             child: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.pink, Colors.blue, Colors.green],
-                ),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(90),
-                    bottomRight: Radius.circular(90)),
+              padding: const EdgeInsets.all(1),
+              // color: Colors.white,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(40),
               ),
+              child: IconButton(
+                icon: const Icon(Icons.menu),
+                onPressed: () {
+                  _scaffoldKey.currentState?.openDrawer();
+                },
+              ),
+            ),
+          ),
+
+          Positioned(
+            top: 30,
+            right: 20,
+            height: 50,
+            width: 50,
+            child: Container(
+              padding: const EdgeInsets.all(1),
+              // color: Colors.white,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.arrow_drop_down),
+                onPressed: () {},
+              ),
+            ),
+          ),
+
+          Positioned(
+            top: 0,
+            child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.15,
               width: MediaQuery.of(context).size.width * 1,
               child: const Center(
