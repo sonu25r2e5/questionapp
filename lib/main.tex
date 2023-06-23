@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+% Define nodes
+\node (start) [circle, draw, text width=2cm, align=center] {Start};
+\node (objective1) [rectangle, draw, text width=3cm, align=center, below of=start] {Objective 1};
+\node (objective2) [rectangle, draw, text width=3cm, align=center, left of=objective1, xshift=-2cm] {Objective 2};
+\node (objective3) [rectangle, draw, text width=3cm, align=center, right of=objective1, xshift=2cm] {Objective 3};
+\node (objective4) [rectangle, draw, text width=3cm, align=center, below of=objective1] {Objective 4};
+\node (end) [circle, draw, text width=2cm, align=center, below of=objective4] {End};
+
+% Define arrows
+\draw [->] (start) -- (objective1);
+\draw [->] (start) -- (objective2);
+\draw [->] (start) -- (objective3);
+\draw [->] (objective1) -- (objective4);
+\draw [->] (objective2) -- (objective4);
+\draw [->] (objective3) -- (objective4);
+\draw [->] (objective4) -- (end);
+
+\end{tikzpicture}W
+
+\end{document}

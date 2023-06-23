@@ -1,64 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:studentapp/screeens/note.dart';
-import 'package:studentapp/timer/timer.dart';
-import 'package:studentapp/screeens/planner.dart';
 
 class Part1 extends StatelessWidget {
   const Part1({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List add = [
-      IconButton(
-        icon: const Icon(
-          Icons.note,
-        ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (ctx) => const Notepage(),
-            ),
-          );
-        },
-      ),
-      IconButton(
-        icon: const Icon(Icons.task_rounded),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (ctx) => const Planner(),
-            ),
-          );
-        },
-      ),
-      IconButton(
-        icon: const Icon(
-          Icons.call,
-          color: Colors.redAccent,
-        ),
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (ctx) => const ImageToPdfList(),
-            ),
-          );
-        },
-      ),
-      IconButton(
-        icon: const Icon(Icons.sports_gymnastics),
-        onPressed: () {},
-      ),
-      IconButton(
-        icon: const Icon(Icons.person),
-        onPressed: () {},
-      ),
-      IconButton(
-        icon: const Icon(Icons.access_alarm),
-        onPressed: () {},
-      ),
-    ];
+    final List add = [];
     return Padding(
       padding: const EdgeInsets.all(1.0),
       child: CustomPaint(

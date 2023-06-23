@@ -77,6 +77,12 @@ class _ImageToPdfListState extends State<ImageToPdfList> {
     _updateCache();
   }
 
+  Future<void> _removeFile(int index) async {
+    // final file = File(pdfFile.filePath);
+    _pdfFiles.removeAt(index);
+    _updateCache();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,6 +95,12 @@ class _ImageToPdfListState extends State<ImageToPdfList> {
           final pdfDoc = _pdfFiles[index];
           return ListTile(
             title: Text(pdfDoc.fileName),
+            trailing: IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () {
+                _removeFile(index);
+              },
+            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -182,7 +194,7 @@ class _ImageToPdfListState extends State<ImageToPdfList> {
       build: (pw.Context context) {
         return pw.Image(
           pw.MemoryImage(uint8List),
-          fit: pw.BoxFit.contain,
+          fit: pw.BoxFit.fill,
         );
       },
     ));
