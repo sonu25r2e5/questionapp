@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:studentapp/homeui/homeui.dart';
 import 'package:studentapp/mainscreenpart/classee.dart';
 import 'package:studentapp/podomora%20app/podomora.dart';
-import 'package:studentapp/podomora%20app/putils.dart';
 import 'package:studentapp/screeens/note.dart';
 import 'package:studentapp/screeens/planner.dart';
 import 'package:studentapp/timer/timer.dart';
@@ -24,8 +24,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme:
-          ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey)),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
+      ),
       routes: {
         '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
         '/note': (context) => const Notepage(),
@@ -64,9 +65,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // List text = ['Note', 'To do List', 'Note Taking', 'Pandormora Timer'];
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    final Map<String, WidgetBuilder> routes = {
+      '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
+      '/note': (context) => const Notepage(),
+      '/planner': (context) => const Planner(),
+      '/timer': (context) => const PodomoraApp(),
+      '/pdf': (context) => const ImageToPdfList(),
+    };
+
     List<Testwee> tee = [
       const Testwee('Note', Icons.note, '/note'),
       const Testwee('Planner', Icons.task_rounded, '/planner'),
@@ -75,7 +83,6 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
 
     return Scaffold(
-      key: _scaffoldKey,
       drawer: Drawer(
         child: ListView(
           children: [
@@ -118,95 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      body: Stack(
-        fit: StackFit.loose,
-        children: [
-          const Positioned.fill(
-            child: Image(
-              image: AssetImage('assets/images/book2.jpg'),
-              // fit: BoxFit.cover,
-            ),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.2,
-            left: MediaQuery.of(context).size.width * 0.25,
-            child: Center(
-              child: Text(
-                'Smart Desk',
-                style: textStyle(
-                  30,
-                  Colors.amber,
-                  FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-
-          Positioned(
-            bottom: MediaQuery.of(context).size.height * .1,
-            left: MediaQuery.of(context).size.width * 0.1,
-            child: const Text(
-              '"Unleash your academic Potential"',
-              style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontSize: 23,
-              ),
-            ),
-          ),
-
-          Positioned(
-            top: 30,
-            right: 20,
-            height: 50,
-            width: 50,
-            child: Container(
-              padding: const EdgeInsets.all(1),
-              // color: Colors.white,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(40),
-              ),
-              child: IconButton(
-                icon: const Icon(Icons.notification_add),
-                onPressed: () {},
-              ),
-            ),
-          ),
-
-          Positioned(
-            top: 30,
-            left: 20,
-            height: 50,
-            width: 50,
-            child: Container(
-              padding: const EdgeInsets.all(1),
-              // color: Colors.white,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(40),
-              ),
-              child: IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {
-                  _scaffoldKey.currentState?.openDrawer();
-                },
-              ),
-            ),
-          ),
-
-          // const SizedBox(height: 30),
-          // const Positioned(
-          //   bottom: 0,
-          //   child: Stack(
-          //     clipBehavior: Clip.none,
-          //     children: [
-          //       Part1(),
-          //     ],
-          //   ),
-          // ),
-          // const Part2(),
-        ],
-      ),
+      body: const HomeUi(),
       bottomNavigationBar: BottomNavigationBar(
         // backgroundColor: Theme.of(context).colorScheme.primary,
         items: const [
