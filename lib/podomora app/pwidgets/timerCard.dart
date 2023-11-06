@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:studentapp/podomora%20app/putils.dart';
+import 'package:studentapp/podomora%20app/pwidgets/timerservice.dart';
 
 class TimerCard extends StatelessWidget {
   const TimerCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<TimerService>(context);
+    final seconds = provider.currentDuration % 60;
     return Column(
       children: [
         Text(
-          'Focus',
+          provider.currentState,
           style: textStyle(
             35,
-            Colors.white,
+            Colors.black,
             FontWeight.w700,
             FontStyle.italic,
           ),
@@ -27,7 +31,7 @@ class TimerCard extends StatelessWidget {
               width: MediaQuery.of(context).size.width / 3.2,
               height: 150,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.pink,
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(
@@ -43,8 +47,9 @@ class TimerCard extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  '12',
-                  style: textStyle(70, Colors.red, FontWeight.w700),
+                  (provider.currentDuration ~/ 60).toString(),
+                  style: textStyle(
+                      70, renderColor(provider.currentState), FontWeight.w700),
                 ),
               ),
             ),
@@ -53,7 +58,7 @@ class TimerCard extends StatelessWidget {
             ),
             Text(
               ":",
-              style: textStyle(60, Colors.red, FontWeight.bold),
+              style: textStyle(60, Colors.black, FontWeight.bold),
             ),
             const SizedBox(
               width: 10,
@@ -62,7 +67,7 @@ class TimerCard extends StatelessWidget {
               width: MediaQuery.of(context).size.width / 3.2,
               height: 150,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.pink,
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(
@@ -78,8 +83,11 @@ class TimerCard extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  '0',
-                  style: textStyle(70, Colors.red, FontWeight.w700),
+                  seconds == 0
+                      ? "${seconds.round()}0"
+                      : seconds.round().toString(),
+                  style: textStyle(
+                      70, renderColor(provider.currentState), FontWeight.w700),
                 ),
               ),
             ),

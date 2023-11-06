@@ -87,7 +87,7 @@ class _ImageToPdfListState extends State<ImageToPdfList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Image to PDF List'),
+        title: const Text('Capture Your note'),
       ),
       body: ListView.builder(
         itemCount: _pdfFiles.length,

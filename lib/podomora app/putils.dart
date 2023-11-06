@@ -12,6 +12,7 @@ TextStyle textStyle(double size,
 }
 
 List selectableTimes = [
+  "0",
   "300",
   "600",
   "900",
@@ -24,3 +25,11 @@ List selectableTimes = [
   "3000",
   "3300",
 ];
+
+Color renderColor(String currentState) {
+  if (currentState == "FOCUS") {
+    return Colors.redAccent;
+  } else {
+    return Colors.lightBlue;
+  }
+}

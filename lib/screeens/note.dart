@@ -14,7 +14,7 @@ class _NotepageState extends State<Notepage> {
     return Scaffold(
       appBar: AppBar(
         actions: const [],
-        title: const Text('Note'),
+        title: const Text('Question Paper'),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: const Column(

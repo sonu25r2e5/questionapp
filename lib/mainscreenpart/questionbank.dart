@@ -13,7 +13,7 @@ class Part2 extends StatefulWidget {
 
 class _Part2State extends State<Part2> {
   final List<Subject> _items = [
-    Subject('P & S II', 'assets/photos/tajmahal.jpg', 'lib/widget/main2.dart',
+    Subject('P & S II', 'assets/photos/book.gif', 'lib/widget/main2.dart',
         questions: [
           Question(2076, '2076 Chaitra', 'assets/yearwise/2076Chaitra.pdf'),
           Question(2076, '2076 Ashwin', 'assets/yearwise/2076Ashwin.pdf'),
@@ -24,7 +24,7 @@ class _Part2State extends State<Part2> {
           Question(2075, '2072 Kartik', 'assets/yearwise/2072Kartik.pdf'),
           Question(2075, '2072 Chaitra', 'assets/yearwise/2072Chaitra.pdf'),
         ]),
-    Subject('COA', 'assets/photos/ssd.jpg', 'hi', questions: [
+    Subject('COA', 'assets/photos/book.gif', 'hi', questions: [
       Question(2076, '2080', 'assets/subject/coa/2080.pdf'),
       Question(2076, '2079', 'assets/subject/coa/2079.pdf'),
       Question(2076, '2078 Bhadra', 'assets/subject/coa/2078.pdf'),
@@ -34,7 +34,7 @@ class _Part2State extends State<Part2> {
     ]),
     Subject(
       'Computer Graphics',
-      'assets/photos/tajmahal.jpg',
+      'assets/photos/book.gif',
       'hi',
       questions: [
         Question(2076, '2080 Baishakh', 'assets/subject/cg/2080cg.pdf'),
@@ -46,7 +46,7 @@ class _Part2State extends State<Part2> {
     ),
     Subject(
       'Data Communication',
-      'assets/photos/tajmahal.jpg',
+      'assets/photos/book.gif',
       'ji',
       questions: [
         Question(2076, '2080', 'assets/subject/dc/dc2080.pdf'),
@@ -58,7 +58,7 @@ class _Part2State extends State<Part2> {
     ),
     Subject(
       'Instrumentaion II',
-      'assets/photos/tajmahal.jpg',
+      'assets/photos/book.gif',
       'ki',
       questions: [
         Question(2076, '20780 Baishakh', 'assets/subject/inII/in2080.pdf'),
@@ -69,17 +69,16 @@ class _Part2State extends State<Part2> {
         Question(2076, '2075 Chaitra', 'assets/subject/inII/in2075.pdf'),
       ],
     ),
-    Subject('Software Engineering', 'assets/photos/tajmahal.jpg', 'ii',
-        questions: [
-          Question(2076, '2080 Chaitra', 'assets/subject/se/se2080.pdf'),
-          Question(2076, '2079 Chaitra', 'assets/subject/se/se2079.pdf'),
-          Question(2076, '2078 Bhadra', 'assets/subject/se/se2078Bhadra.pdf'),
-          Question(2076, '2076 Aswin', 'assets/subject/se/se2076Aswin.pdf'),
-          Question(2076, '2076 Chaitra', 'assets/subject/se/se2076.pdf'),
-        ]),
+    Subject('Software Engineering', 'assets/photos/book.gif', 'ii', questions: [
+      Question(2076, '2080 Chaitra', 'assets/subject/se/se2080.pdf'),
+      Question(2076, '2079 Chaitra', 'assets/subject/se/se2079.pdf'),
+      Question(2076, '2078 Bhadra', 'assets/subject/se/se2078Bhadra.pdf'),
+      Question(2076, '2076 Aswin', 'assets/subject/se/se2076Aswin.pdf'),
+      Question(2076, '2076 Chaitra', 'assets/subject/se/se2076.pdf'),
+    ]),
     Subject(
       'Communication English',
-      'assets/photos/tajmahal.jpg',
+      'assets/photos/book.gif',
       'i',
       questions: [
         Question(2076, '2080 Baisahakh', 'assets/subject/ce/en2080.pdf'),
@@ -113,7 +112,7 @@ class _Part2State extends State<Part2> {
                     height: 20,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Theme.of(context).colorScheme.primary,
+                      // color: Theme.of(context).colorScheme.primary,
                     ),
                     child: Text(
                       _items[index].name,

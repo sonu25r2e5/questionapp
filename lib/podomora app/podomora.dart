@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:studentapp/podomora%20app/pwidgets/widget.dart';
+import 'package:provider/provider.dart';
+import 'package:studentapp/podomora%20app/pwidgets/progress.dart';
+import 'package:studentapp/podomora%20app/pwidgets/timecontroller.dart';
+import 'package:studentapp/podomora%20app/pwidgets/timerCard.dart';
+import 'package:studentapp/podomora%20app/pwidgets/timerservice.dart';
 import 'package:studentapp/podomora%20app/timeroptions.dart';
 import '../podomora app/putils.dart';
 
@@ -8,41 +12,49 @@ class PodomoraApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<TimerService>(context);
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      // backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: renderColor(provider.currentState),
         title: Text(
-          'PromodoTimer',
-          style: textStyle(25, Colors.white, FontWeight.w700),
+          'Clock Timer',
+          style: textStyle(20, Colors.white, FontWeight.w700),
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () =>
+                Provider.of<TimerService>(context, listen: false).reset(),
             icon: const Icon(
               Icons.refresh,
               color: Colors.white,
             ),
-            iconSize: 40,
-          )
+            iconSize: 26,
+          ),
         ],
       ),
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
-          child: Column(
+          child: const Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 12,
               ),
-              const TimerCard(),
-              const SizedBox(
+              TimerCard(),
+              SizedBox(
                 height: 40,
               ),
-              TimerOptions(
-                
+              TimerOptions(),
+              SizedBox(
+                height: 90,
               ),
+              TimeController(),
+              SizedBox(
+                height: 60,
+              ),
+              ProgressWidget(),
             ],
           ),
         ),
