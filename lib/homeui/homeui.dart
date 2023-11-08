@@ -189,13 +189,13 @@ class _HomeUiState extends State<HomeUi> {
           ),
           BottomNavigationBarItem(
               icon: IconButton(
-                icon: const Icon(Icons.play_circle_fill_outlined),
+                icon: const Icon(Icons.favorite),
                 onPressed: () {
                   showModalBottomSheet(
                       context: context,
                       builder: (BuildContext context) {
-                        return const SizedBox(
-                          height: 200,
+                        return SizedBox(
+                          height: MediaQuery.of(context).size.height * 1.5,
                         );
                       });
                 },
@@ -209,7 +209,7 @@ class _HomeUiState extends State<HomeUi> {
                 showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) {
-                      return Setting();
+                      return const Setting();
                     });
               },
             ),
