@@ -13,18 +13,19 @@ class Imagee extends StatelessWidget {
         title: Text(qse.yearName),
       ),
       body: PDF(
-        
         enableSwipe: true,
         onError: (error) {
-          print(
-            error.toString(),
-          );
+          // print(
+          //   error.toString(),
+          // );
         },
         onPageError: (page, error) {
-          print('$page: ${error.toString()}');
+          // print(
+          //   '$page: ${error.toString()}',
+          // );
         },
         onPageChanged: (int? page, total) {
-          print('page: $page/$total');
+          // print('page: $page/$total');
         },
       ).fromAsset(qse.url),
     );

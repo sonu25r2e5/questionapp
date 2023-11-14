@@ -1,9 +1,13 @@
+import 'dart:ui';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:studentapp/apirequest/scrrens/home_screen.dart';
+import 'package:studentapp/bottomiconbarwidgets/homepagewidget.dart';
 import 'package:studentapp/bottomiconbarwidgets/setting.dart';
 import 'package:studentapp/login&registration/LoginScreen.dart';
 import 'package:studentapp/mainscreenpart/classee.dart';
-import '../podomora app/putils.dart';
+// import '../podomora app/putils.dart';
 
 class HomeUi extends StatefulWidget {
   const HomeUi({super.key});
@@ -32,43 +36,50 @@ class _HomeUiState extends State<HomeUi> {
     ];
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            UserAccountsDrawerHeader(
-              accountName:
-                  Text(FirebaseAuth.instance.currentUser?.displayName ?? ''),
-              accountEmail:
-                  Text(FirebaseAuth.instance.currentUser?.email ?? ''),
-              currentAccountPicture: const CircleAvatar(
-                backgroundImage: AssetImage('assets/Icons/student.png'),
+      drawer: BackdropFilter(
+        filter: ImageFilter.blur(
+          sigmaX: 3,
+          sigmaY: 3,
+        ),
+        child: Drawer(
+          // backgroundColor: Colors.blue.withOpacity(0.8),
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                accountName:
+                    Text(FirebaseAuth.instance.currentUser?.displayName ?? ''),
+                accountEmail:
+                    Text(FirebaseAuth.instance.currentUser?.email ?? ''),
+                currentAccountPicture: const CircleAvatar(
+                  backgroundImage: AssetImage('assets/Icons/student.png'),
+                ),
               ),
-            ),
-            ...List.generate(
-              tee.length,
-              (index) {
-                return ListTile(
-                  // tileColor: Theme.of(context).colorScheme.secondary,
+              ...List.generate(
+                tee.length,
+                (index) {
+                  return ListTile(
+                    // tileColor: Theme.of(context).colorScheme.secondary,
 
-                  onTap: () {
-                    Navigator.of(context).pushNamed(tee[index].routeName);
-                  },
-                  title: Text(tee[index].text),
-                  contentPadding: const EdgeInsets.all(2),
-                  trailing: Icon(tee[index].iconData),
-                );
-              },
-            ),
-            const Divider(),
-            ListTile(
-              title: const Text('Logout'),
-              trailing: const Icon(Icons.logout),
-              onTap: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
-              },
-            )
-          ],
+                    onTap: () {
+                      Navigator.of(context).pushNamed(tee[index].routeName);
+                    },
+                    title: Text(tee[index].text),
+                    contentPadding: const EdgeInsets.all(2),
+                    trailing: Icon(tee[index].iconData),
+                  );
+                },
+              ),
+              const Divider(),
+              ListTile(
+                title: const Text('Logout'),
+                trailing: const Icon(Icons.logout),
+                onTap: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                },
+              )
+            ],
+          ),
         ),
       ),
       body: Stack(
@@ -86,29 +97,31 @@ class _HomeUiState extends State<HomeUi> {
             ),
           ),
 
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.2,
-            left: MediaQuery.of(context).size.width * 0.25,
-            child: Center(
-              child: Text(
-                'Smart Desk',
-                style: textStyle(
-                    30, Colors.amber, FontWeight.bold, FontStyle.italic),
-              ),
-            ),
-          ),
+          const details(),
 
-          Positioned(
-            bottom: MediaQuery.of(context).size.height * .1,
-            left: MediaQuery.of(context).size.width * 0.2,
-            child: const Text(
-              '"Unleash your academic Potential"',
-              style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontSize: 16,
-              ),
-            ),
-          ),
+          // Positioned(
+          //   top: MediaQuery.of(context).size.height * 0.2,
+          //   left: MediaQuery.of(context).size.width * 0.25,
+          //   child: Center(
+          //     child: Text(
+          //       'Smart Desk',
+          //       style: textStyle(
+          //           30, Colors.amber, FontWeight.bold, FontStyle.italic),
+          //     ),
+          //   ),
+          // ),
+
+          // Positioned(
+          //   bottom: MediaQuery.of(context).size.height * .1,
+          //   left: MediaQuery.of(context).size.width * 0.2,
+          //   child: const Text(
+          //     '\n"Unleash your \n academic Potential"',
+          //     style: TextStyle(
+          //       fontStyle: FontStyle.italic,
+          //       fontSize: 22,
+          //     ),
+          //   ),
+          // ),
 
           Positioned(
             top: 30,
@@ -150,6 +163,26 @@ class _HomeUiState extends State<HomeUi> {
               ),
             ),
           ),
+          // GridView.builder(
+          //     padding: const EdgeInsets.all(100),
+          //     itemCount: 6,
+
+          //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          //       childAspectRatio: 3 / 2,
+          //       maxCrossAxisExtent: 200,
+          //       mainAxisSpacing: 30,
+          //       crossAxisSpacing: 40,
+          //     ),
+          //     itemBuilder: (BuildContext context, int) {
+          //       return Container(
+          //         decoration: const BoxDecoration(
+          //           color: Colors.brown,
+          //           // shape: BoxShape.circle,
+          //           backgroundBlendMode: BlendMode.difference,
+          //         ),
+          //         child: const Text('hi asas'),
+          //       );
+          //     }),
 
           // const SizedBox(height: 30),
           // const Positioned(
@@ -177,12 +210,33 @@ class _HomeUiState extends State<HomeUi> {
               icon: const Icon(Icons.play_circle_fill_outlined),
               onPressed: () {
                 showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return const SizedBox(
-                        height: 300,
-                      );
-                    });
+                  backgroundColor: Colors.white.withOpacity(0.1),
+                  context: context,
+                  builder: (BuildContext context) {
+                    return BackdropFilter(
+                      filter: ImageFilter.blur(
+                        sigmaX: 1.8,
+                        sigmaY: 1.8,
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.green.withOpacity(
+                                0.5,
+                              ),
+                              Colors.blue.withOpacity(
+                                0.5,
+                              )
+                            ],
+                          ),
+                        ),
+                        height: 800,
+                        child: const Videoplayerscreen(),
+                      ),
+                    );
+                  },
+                );
               },
             ),
             label: 'favorite',
@@ -192,10 +246,33 @@ class _HomeUiState extends State<HomeUi> {
                 icon: const Icon(Icons.favorite),
                 onPressed: () {
                   showModalBottomSheet(
+                      backgroundColor: Colors.blue.withOpacity(0.1),
                       context: context,
                       builder: (BuildContext context) {
-                        return SizedBox(
-                          height: MediaQuery.of(context).size.height * 1.5,
+                        return BackdropFilter(
+                          filter: ImageFilter.blur(
+                            sigmaX: 1.8,
+                            sigmaY: 1.9,
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.white.withOpacity(0.2),
+                                  Colors.green.withOpacity(0.6),
+                                ],
+                              ),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(
+                                  10,
+                                ),
+                              ),
+                              border: Border.all(
+                                color: Colors.white.withOpacity(0.2),
+                              ),
+                            ),
+                            height: 500,
+                          ),
                         );
                       });
                 },
@@ -207,9 +284,16 @@ class _HomeUiState extends State<HomeUi> {
               icon: const Icon(Icons.settings),
               onPressed: () {
                 showModalBottomSheet(
+                    backgroundColor: Colors.blue.withOpacity(0.1),
                     context: context,
                     builder: (BuildContext context) {
-                      return const Setting();
+                      return BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: 1.8,
+                          sigmaY: 1.9,
+                        ),
+                        child: const Setting(),
+                      );
                     });
               },
             ),

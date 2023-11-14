@@ -1,7 +1,13 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
 class eee {
-  String  fee; 
+  String subject;
+  String imag;
+  String description;
 
-  eee(this.fee);
+  eee(
+    this.subject,
+    this.imag,
+    this.description,
+  );
 }

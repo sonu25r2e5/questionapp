@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:studentapp/login&registration/color_utilis.dart';
+import 'package:studentapp/login&registration/loginpageproperties/Textfield2.dart';
+import 'package:studentapp/login&registration/loginpageproperties/Textfiled.dart';
+import 'package:studentapp/login&registration/loginpageproperties/apple.dart';
 import 'package:studentapp/login&registration/registrationscreen.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:studentapp/main.dart';
 import '../homeui/homeui.dart';
+import 'package:text_divider/text_divider.dart';
 
 class LoginScreen extends StatelessWidget {
   TextEditingController emailTextEditingController = TextEditingController();
@@ -39,8 +43,8 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const Image(
                   image: AssetImage("assets/Icons/student.png"),
-                  height: 360,
-                  width: 350,
+                  height: 250,
+                  width: 250,
                   alignment: Alignment.center,
                 ),
                 const SizedBox(
@@ -58,51 +62,15 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 1.0,
                       ),
-                      TextField(
-                        controller: emailTextEditingController,
-                        cursorColor: Colors.white,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.email,
-                            color: Colors.black,
-                          ),
-                          labelText: "Email",
-                          labelStyle: TextStyle(
-                            fontSize: 14.0,
-                          ),
-                          hintStyle: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        style: const TextStyle(
-                          fontSize: 14.0,
-                        ),
-                      ),
+                      Textfiled1(
+                          emailTextEditingController:
+                              emailTextEditingController),
                       const SizedBox(
                         height: 1.0,
                       ),
-                      TextField(
-                        controller: passwordTextEditingController,
-                        cursorColor: Colors.white,
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.lock,
-                            color: Colors.black,
-                          ),
-                          labelText: "Password",
-                          labelStyle: TextStyle(
-                            fontSize: 14.0,
-                          ),
-                          hintStyle: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
-                        style: const TextStyle(
-                          fontSize: 14.0,
-                        ),
-                      ),
+                      Textfiled2(
+                          passwordTextEditingController:
+                              passwordTextEditingController),
                       const SizedBox(
                         height: 15.0,
                       ),
@@ -120,19 +88,20 @@ class LoginScreen extends StatelessWidget {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                20,
-                              ),
-                            )),
+                          backgroundColor: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              20,
+                            ),
+                          ),
+                        ),
                         child: const SizedBox(
                           height: 50.0,
                           child: Center(
                             child: Text(
-                              "Login",
+                              "Log In",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontSize: 30.0,
                                   fontFamily: "Brand Bold"),
                             ),
@@ -142,6 +111,19 @@ class LoginScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                TextDivider.horizontal(
+                  color: Colors.black87,
+                  thickness: 3.0,
+                  text: const Text('or'),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const googlebutton(),
+                const SizedBox(
+                  height: 10,
+                ),
+                const applebutton(),
                 TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -200,3 +182,6 @@ class LoginScreen extends StatelessWidget {
     }
   }
 }
+
+
+

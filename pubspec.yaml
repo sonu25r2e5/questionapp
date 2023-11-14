@@ -51,6 +51,8 @@ dependencies:
   firebase_auth: ^4.6.3
   fluttertoast: ^8.2.2
   firebase_database: ^10.2.3
+  text_divider: ^1.0.0
+  youtube_player_flutter: ^8.1.2
 
 dev_dependencies:
   flutter_test:

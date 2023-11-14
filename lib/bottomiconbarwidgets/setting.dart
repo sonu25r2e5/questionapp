@@ -19,7 +19,12 @@ class Setting extends StatelessWidget {
       subject("Help", Icons.help),
     ];
 
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+        Colors.white.withOpacity(0.6),
+        Colors.green.withOpacity(0.2),
+      ])),
       height: MediaQuery.of(context).size.height * 0.9,
       child: Column(
         children: [

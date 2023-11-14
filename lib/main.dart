@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:studentapp/homeui/homeui.dart';
 import 'package:studentapp/login&registration/LoginScreen.dart';
 import 'package:studentapp/podomora%20app/podomora.dart';
 import 'package:studentapp/podomora%20app/pwidgets/timerservice.dart';
@@ -38,7 +40,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-            seedColor: Color.fromARGB(255, 155, 22, 137),),
+          seedColor: const Color.fromARGB(255, 155, 22, 137),
+        ),
       ),
       routes: {
         '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -62,6 +65,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final user = FirebaseAuth.instance.currentUser;
+
   // int _selectedIndex = 0;
 
   // void _onItemTapped(int index) {
@@ -94,7 +99,17 @@ class _MyHomePageState extends State<MyHomePage> {
       // ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      body: LoginScreen(),
+      body: user != null ? const HomeUi() : LoginScreen(),
+      // body: LoginScreen(),
     );
   }
 }
+
+// class notlogin extends StatelessWidget {
+//   const notlogin({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }
