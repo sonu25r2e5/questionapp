@@ -3,14 +3,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:provider/provider.dart';
 import 'package:studentapp/homeui/homeui.dart';
 import 'package:studentapp/login&registration/login_screen.dart';
+import 'package:studentapp/pdfconverter/timer.dart';
 import 'package:studentapp/podomora%20app/podomora.dart';
 import 'package:studentapp/podomora%20app/pwidgets/timerservice.dart';
 import 'package:studentapp/screeens/note.dart';
 import 'package:studentapp/screeens/planner.dart';
-import 'package:studentapp/pdfconverter/timer.dart';
-import 'package:provider/provider.dart';
 
 void main() async {
   // open a box

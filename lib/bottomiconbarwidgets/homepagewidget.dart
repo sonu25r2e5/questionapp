@@ -85,7 +85,7 @@ class Details extends StatelessWidget {
                                 height: screenHeight * 0.03,
                               ),
                               const Text(
-                                'Test',
+                                'Testss',
                                 style: TextStyle(
                                   fontSize: 60,
                                   fontWeight: FontWeight.bold,
