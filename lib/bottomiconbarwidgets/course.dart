@@ -1,11 +1,11 @@
 // import 'package:flutter/material.dart';
 
-class eee {
+class Eee {
   String subject;
   String imag;
   String description;
 
-  eee(
+  Eee(
     this.subject,
     this.imag,
     this.description,

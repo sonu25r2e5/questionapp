@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "35346923712",
+    "firebase_url": "https://studentapp-26c51-default-rtdb.firebaseio.com",
     "project_id": "studentapp-26c51",
     "storage_bucket": "studentapp-26c51.appspot.com"
   },
@@ -12,33 +13,15 @@
           "package_name": "com.example.studentapp"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "35346923712-608ntjj0vnl1apdqv0vgj49cmvj5dfai.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.studentapp",
-            "certificate_hash": "4eb53bf363ebb766c6499d9e886a8ebf32f0bb69"
-          }
-        },
-        {
-          "client_id": "35346923712-q99qolks5grg4seupuacklqfarv27toe.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBpv5Wj42CtyJ1IG7B3zura1veiaTr3YmM"
+          "current_key": "AIzaSyDtY915Mwy-FvsNlsQGnHvhn9XMlOEDdqw"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "35346923712-q99qolks5grg4seupuacklqfarv27toe.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

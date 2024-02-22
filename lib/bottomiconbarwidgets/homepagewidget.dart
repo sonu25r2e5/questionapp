@@ -2,36 +2,39 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:studentapp/bottomiconbarwidgets/course.dart';
+import 'package:studentapp/dailyquizbuttom/quiz_layout.dart';
+import 'package:studentapp/dailyquizbuttom/subjective.dart';
 
-class details extends StatelessWidget {
-  const details({
+class Details extends StatelessWidget {
+  const Details({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    List<eee> subette = [
-      eee("Hello Harry", "assert/image/descrioption",
-          "you have completed \n 15 lesson to complete "),
-      eee(
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
+    List<Eee> subette = [
+      Eee("Hello Sonu", "assert/image/descrioption", "Daily Question"),
+      Eee(
         "Leadership",
         "assets/images/seitign.png",
         "Find out who is leading the class and your combined scores",
       ),
-      eee("Study tips", "assets/images/studentss.png",
+      Eee("Study tips", "assets/images/studentss.png",
           "find out the best tips that are our most trusted teachers are giving you this year"),
     ];
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: Container(
         margin: EdgeInsets.only(
-          top: MediaQuery.of(context).size.height * 0.1,
+          top: screenHeight * 0.15,
           left: 20,
-          // bottom: MediaQuery.of(context).size.height * 0.,
           right: 20,
         ),
-        height: MediaQuery.of(context).size.height * 12,
-        width: MediaQuery.of(context).size.width * 0.9,
+        height: screenHeight * 2,
+        width: screenWidth * 0.9,
         // decoration: const BoxDecoration(
         //   // color: Colors.amberAccent,
         //   gradient: LinearGradient(
@@ -42,7 +45,7 @@ class details extends StatelessWidget {
         //   ),
         // ),
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(5.0),
           child: BackdropFilter(
             filter: ImageFilter.blur(
               sigmaX: 0.8,
@@ -60,24 +63,16 @@ class details extends StatelessWidget {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.2,
-                      width: MediaQuery.of(context).size.height * 0.9,
-                      child: Row(
+                      height: screenHeight * 0.25,
+                      width: screenWidth * 0.9,
+                      child: Column(
+                        // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(
-                            height: 99,
-                            width: 99,
-                            child: Image(
-                              image: AssetImage(
-                                'assets/images/hero.png',
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          // SizedBox(
+                          //   height: screenHeight * 0.1,
+                          // ),
                           Column(
                             children: [
                               Text(
@@ -87,16 +82,46 @@ class details extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(
-                                width: 150,
-                                child: Text(subette[0].description),
+                                height: screenHeight * 0.03,
+                              ),
+                              const Text(
+                                'Test',
+                                style: TextStyle(
+                                  fontSize: 60,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: screenHeight * 0.02,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext) =>
+                                          const Subjective(),
+                                    ),
+                                  );
+                                },
+                                child: const Text('Subjective'),
                               ),
                               ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Choose'),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Start'),
+                                onPressed: () {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          const QuizLayout(),
+                                    ),
+                                  );
+                                },
+                                child: const Text('Daily'),
                               ),
                             ],
                           ),
@@ -106,7 +131,7 @@ class details extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 32,
+                  height: screenHeight * 0.06,
                 ),
                 BackdropFilter(
                   filter: ImageFilter.blur(
@@ -114,8 +139,8 @@ class details extends StatelessWidget {
                     sigmaY: 0.1,
                   ),
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: screenHeight * 0.35,
+                    width: screenWidth * 0.9,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -131,62 +156,49 @@ class details extends StatelessWidget {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
 
-                        mainAxisExtent:
-                            MediaQuery.of(context).size.height * 0.6,
+                        mainAxisExtent: screenWidth * 0.6,
                         crossAxisSpacing: 22,
                         childAspectRatio: 1 / 3,
 
                         // crossAxisSpacing: 200,
                       ),
                       itemBuilder: (BuildContext context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Column(
-                            children: [
-                              // ListTile(
-                              //   title: Text(subette[index + 1].subject),
-                              //   // subtitle: Text(subette[index + 1].description),
-                              //   leading: const Image(
-                              //     image: AssetImage('assets/Icons/student.png'),
-                              //   ),
-                              // ),
-                              // const SizedBox(
-                              //   height: 10,
-                              // ),
-                              SizedBox(
-                                height: 100,
-                                width: 150,
-                                child: CircleAvatar(
-                                  child: Image(
-                                    image: AssetImage(
-                                      subette[index + 1].imag,
-                                    ),
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SizedBox(
+                              height: screenHeight * .1,
+                              width: screenWidth * 0.5,
+                              child: CircleAvatar(
+                                child: Image(
+                                  image: AssetImage(
+                                    subette[index + 1].imag,
                                   ),
                                 ),
                               ),
-                              // const Divider(),
-                              Text(
-                                subette[index + 1].subject,
-                                style: const TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                            ),
+                            // const Divider(),
+                            Text(
+                              subette[index + 1].subject,
+                              style: const TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Text(
-                                  subette[index + 1].description,
-                                  style: const TextStyle(
-                                    fontSize: 13.9,
-                                  ),
-                                ),
+                            ),
+                            Text(
+                              subette[index + 1].description,
+                              style: const TextStyle(
+                                fontSize: 10.9,
                               ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Learn more'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {},
+                              child: const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text('Learn more'),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         );
                       },
                     ),

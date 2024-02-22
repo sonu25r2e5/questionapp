@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:studentapp/apirequest/models/channel_models.dart';
 import 'package:studentapp/apirequest/models/video_models.dart';
-import 'package:studentapp/apirequest/scrrens/videoscreen.dart';
-import 'package:studentapp/apirequest/services/apiservices.dart';
+import 'package:studentapp/apirequest/screens/videoscreen.dart';
+import 'package:studentapp/apirequest/services/ApiServices.dart';
 
 class Videoplayerscreen extends StatefulWidget {
   const Videoplayerscreen({super.key});
@@ -17,13 +17,14 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
 
   @override
   void initState() {
+    super.initState();
     // TODO: implement initState
     _initChannel();
   }
 
   _initChannel() async {
     Channel channel =
-        await apiService.instance.fetchChannel('UCnocXD1MeH4DVPKCVtZHL7Q');
+        await ApiService.instance.fetchChannel('UCnocXD1MeH4DVPKCVtZHL7Q');
     setState(() {
       _channel = channel;
     });
@@ -131,9 +132,9 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
 
   _loadMoreVideos() async {
     _isloading = true;
-    List<Video> moreVideos = await apiService.instance
+    List<Video> moreVideos = await ApiService.instance
         .fetchVideosFromPlaylist(playlistId: _channel!.uploadPlaylistId);
-    List<Video> allVideos = _channel!.videos..addAll(moreVideos);
+    List<Video> allVideos = _channel!.videos!..addAll(moreVideos);
     setState(() {
       _channel?.videos = allVideos;
     });
@@ -146,7 +147,7 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
         ? NotificationListener<ScrollNotification>(
             onNotification: (ScrollNotification scrollDetails) {
               if (!_isloading &&
-                  _channel!.videos.length != int.parse(_channel!.videoCount) &&
+                  _channel!.videos!.length != int.parse(_channel!.videoCount) &&
                   scrollDetails.metrics.pixels ==
                       scrollDetails.metrics.maxScrollExtent) {
                 _loadMoreVideos();
@@ -157,7 +158,7 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
               if (index == 0) {
                 return _buildProfileInfo();
               }
-              Video video = _channel!.videos[index - 1];
+              Video video = _channel!.videos![index - 1];
               return _buildVideo(video);
             }),
           )

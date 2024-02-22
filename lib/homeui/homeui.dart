@@ -2,10 +2,10 @@ import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:studentapp/apirequest/scrrens/home_screen.dart';
+import 'package:studentapp/apirequest/screens/home_screen.dart';
 import 'package:studentapp/bottomiconbarwidgets/homepagewidget.dart';
 import 'package:studentapp/bottomiconbarwidgets/setting.dart';
-import 'package:studentapp/login&registration/LoginScreen.dart';
+import 'package:studentapp/login&registration/login_screen.dart';
 import 'package:studentapp/mainscreenpart/classee.dart';
 // import '../podomora app/putils.dart';
 
@@ -20,14 +20,7 @@ class _HomeUiState extends State<HomeUi> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    // final Map<String, WidgetBuilder> routes = {
-    //   '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
-    //   '/note': (context) => const Notepage(),
-    //   '/planner': (context) => const Planner(),
-    //   '/timer': (context) => const PodomoraApp(),
-    //   '/pdf': (context) => const ImageToPdfList(),
-    // };
-
+    double screenHeight = MediaQuery.of(context).size.height;
     List<Testwee> tee = [
       const Testwee('Question Paper', Icons.note, '/note'),
       const Testwee('Planner', Icons.task_rounded, '/planner'),
@@ -74,8 +67,12 @@ class _HomeUiState extends State<HomeUi> {
                 title: const Text('Logout'),
                 trailing: const Icon(Icons.logout),
                 onTap: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginScreen(),
+                    ),
+                  );
                 },
               )
             ],
@@ -96,37 +93,11 @@ class _HomeUiState extends State<HomeUi> {
               ),
             ),
           ),
-
-          const details(),
-
-          // Positioned(
-          //   top: MediaQuery.of(context).size.height * 0.2,
-          //   left: MediaQuery.of(context).size.width * 0.25,
-          //   child: Center(
-          //     child: Text(
-          //       'Smart Desk',
-          //       style: textStyle(
-          //           30, Colors.amber, FontWeight.bold, FontStyle.italic),
-          //     ),
-          //   ),
-          // ),
-
-          // Positioned(
-          //   bottom: MediaQuery.of(context).size.height * .1,
-          //   left: MediaQuery.of(context).size.width * 0.2,
-          //   child: const Text(
-          //     '\n"Unleash your \n academic Potential"',
-          //     style: TextStyle(
-          //       fontStyle: FontStyle.italic,
-          //       fontSize: 22,
-          //     ),
-          //   ),
-          // ),
-
+          const Details(),
           Positioned(
-            top: 30,
+            top: screenHeight * 0.08,
             right: 20,
-            height: 50,
+            height: screenHeight * 0.05,
             width: 50,
             child: Container(
               padding: const EdgeInsets.all(1),
@@ -141,9 +112,8 @@ class _HomeUiState extends State<HomeUi> {
               ),
             ),
           ),
-
           Positioned(
-            top: 30,
+            top: screenHeight * 0.08,
             left: 20,
             height: 50,
             width: 50,
@@ -163,45 +133,12 @@ class _HomeUiState extends State<HomeUi> {
               ),
             ),
           ),
-          // GridView.builder(
-          //     padding: const EdgeInsets.all(100),
-          //     itemCount: 6,
-
-          //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          //       childAspectRatio: 3 / 2,
-          //       maxCrossAxisExtent: 200,
-          //       mainAxisSpacing: 30,
-          //       crossAxisSpacing: 40,
-          //     ),
-          //     itemBuilder: (BuildContext context, int) {
-          //       return Container(
-          //         decoration: const BoxDecoration(
-          //           color: Colors.brown,
-          //           // shape: BoxShape.circle,
-          //           backgroundBlendMode: BlendMode.difference,
-          //         ),
-          //         child: const Text('hi asas'),
-          //       );
-          //     }),
-
-          // const SizedBox(height: 30),
-          // const Positioned(
-          //   bottom: 0,
-          //   child: Stack(
-          //     clipBehavior: Clip.none,
-          //     children: [
-          //       Part1(),
-          //     ],
-          //   ),
-          // ),
-          // const Part2(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        // backgroundColor: Theme.of(context).colorScheme.primary,
         items: [
           const BottomNavigationBarItem(
-            backgroundColor: Colors.white70,
+            backgroundColor: Colors.black,
             icon: Icon(Icons.home),
             label: 'Home',
           ),
@@ -222,16 +159,16 @@ class _HomeUiState extends State<HomeUi> {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Colors.green.withOpacity(
-                                0.5,
+                              Colors.white.withOpacity(
+                                0.9,
                               ),
-                              Colors.blue.withOpacity(
-                                0.5,
+                              Colors.white24.withOpacity(
+                                0.6,
                               )
                             ],
                           ),
                         ),
-                        height: 800,
+                        height: screenHeight * 0.8,
                         child: const Videoplayerscreen(),
                       ),
                     );
@@ -258,8 +195,12 @@ class _HomeUiState extends State<HomeUi> {
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [
-                                  Colors.white.withOpacity(0.2),
-                                  Colors.green.withOpacity(0.6),
+                                  Colors.white.withOpacity(
+                                    0.9,
+                                  ),
+                                  Colors.white24.withOpacity(
+                                    0.6,
+                                  ),
                                 ],
                               ),
                               borderRadius: const BorderRadius.all(
@@ -278,7 +219,6 @@ class _HomeUiState extends State<HomeUi> {
                 },
               ),
               label: "home"),
-
           BottomNavigationBarItem(
             icon: IconButton(
               icon: const Icon(Icons.settings),
@@ -299,10 +239,6 @@ class _HomeUiState extends State<HomeUi> {
             ),
             label: 'Camera',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.chat),
-          //   label: 'Chats',
-          // ),
         ],
       ),
     );

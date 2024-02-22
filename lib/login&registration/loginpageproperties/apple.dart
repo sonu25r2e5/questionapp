@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class applebutton extends StatelessWidget {
-  const applebutton({
+class AppleButton extends StatelessWidget {
+  const AppleButton({
     super.key,
   });
 
@@ -57,8 +57,8 @@ class applebutton extends StatelessWidget {
   }
 }
 
-class googlebutton extends StatelessWidget {
-  const googlebutton({
+class GoogleButton extends StatelessWidget {
+  const GoogleButton({
     super.key,
   });
 

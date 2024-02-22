@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:studentapp/homeui/homeui.dart';
 import 'package:studentapp/main.dart';
-
 import 'color_utilis.dart';
 
 class RegistrationScreen extends StatelessWidget {
   RegistrationScreen({super.key});
 
-  TextEditingController nameTextEditingController = TextEditingController();
-  TextEditingController emailTextEditingController = TextEditingController();
-  TextEditingController phoneTextEditingController = TextEditingController();
-  TextEditingController passwordTextEditingController = TextEditingController();
+  final TextEditingController nameTextEditingController =
+      TextEditingController();
+  final TextEditingController emailTextEditingController =
+      TextEditingController();
+  final TextEditingController phoneTextEditingController =
+      TextEditingController();
+  final TextEditingController passwordTextEditingController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -48,162 +51,157 @@ class RegistrationScreen extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.sizeOf(context).height * 0.10,
-                ),
-                const Image(
-                  image: AssetImage("assets/Icons/student.png"),
-                  height: 360,
-                  width: 350,
-                  alignment: Alignment.center,
-                ),
-                const SizedBox(
-                  height: 1.0,
-                ),
-                const Text(
-                  "Register as a user",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 1.0,
-                      ),
-                      TextField(
-                        controller: nameTextEditingController,
-                        keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
-                          labelText: "Name",
-                          labelStyle: TextStyle(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.sizeOf(context).height * 0.12,
+                  ),
+                  Image(
+                    image: const AssetImage("assets/Icons/student.png"),
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 1.0,
+                  ),
+                  const Text(
+                    "Register as a user",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 1.0,
+                        ),
+                        TextField(
+                          controller: nameTextEditingController,
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                            labelText: "Name",
+                            labelStyle: TextStyle(
+                              fontSize: 14.0,
+                            ),
+                            hintStyle: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          style: const TextStyle(
                             fontSize: 14.0,
                           ),
-                          hintStyle: TextStyle(
-                            color: Colors.white,
+                        ),
+                        const SizedBox(
+                          height: 1.0,
+                        ),
+                        TextField(
+                          controller: emailTextEditingController,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: const InputDecoration(
+                            labelText: "Email",
+                            labelStyle: TextStyle(
+                              fontSize: 14.0,
+                            ),
+                            hintStyle: TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        style: const TextStyle(
-                          fontSize: 14.0,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 1.0,
-                      ),
-                      TextField(
-                        controller: emailTextEditingController,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
-                          labelText: "Email",
-                          labelStyle: TextStyle(
+                          style: const TextStyle(
                             fontSize: 14.0,
                           ),
-                          hintStyle: TextStyle(
-                            color: Colors.white,
+                        ),
+                        const SizedBox(
+                          height: 1.0,
+                        ),
+                        TextField(
+                          controller: phoneTextEditingController,
+                          keyboardType: TextInputType.phone,
+                          decoration: const InputDecoration(
+                            labelText: "Phone",
+                            labelStyle: TextStyle(
+                              fontSize: 14.0,
+                            ),
+                            hintStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
                           ),
-                        ),
-                        style: const TextStyle(
-                          fontSize: 14.0,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 1.0,
-                      ),
-                      TextField(
-                        controller: phoneTextEditingController,
-                        keyboardType: TextInputType.phone,
-                        decoration: const InputDecoration(
-                          labelText: "Phone",
-                          labelStyle: TextStyle(
+                          style: const TextStyle(
                             fontSize: 14.0,
                           ),
-                          hintStyle: TextStyle(
-                            color: Colors.grey,
+                        ),
+                        const SizedBox(
+                          height: 1.0,
+                        ),
+                        TextField(
+                          controller: passwordTextEditingController,
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                            labelText: "Password",
+                            labelStyle: TextStyle(
+                              fontSize: 14.0,
+                            ),
+                            hintStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
                           ),
-                        ),
-                        style: const TextStyle(
-                          fontSize: 14.0,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 1.0,
-                      ),
-                      TextField(
-                        controller: passwordTextEditingController,
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          labelText: "Password",
-                          labelStyle: TextStyle(
+                          style: const TextStyle(
                             fontSize: 14.0,
                           ),
-                          hintStyle: TextStyle(
-                            color: Colors.grey,
-                          ),
                         ),
-                        style: const TextStyle(
-                          fontSize: 14.0,
+                        const SizedBox(
+                          height: 15.0,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 15.0,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          // print("login in buttom clicked");
-                          if (nameTextEditingController.text.length < 3) {
-                            displayToastMessage(
-                                "Name must be of 3 character", context);
-                          } else if (!emailTextEditingController.text
-                              .contains("@")) {
-                            displayToastMessage(
-                                "email address isn't valild", context);
-                          } else if (phoneTextEditingController.text.isEmpty) {
-                            displayToastMessage(
-                                "Phone Number is necessity", context);
-                          } else if (passwordTextEditingController.text.length <
-                              6) {
-                            displayToastMessage(
-                                "Password must be 6 character", context);
-                          } else {
-                            registerNewUser(context);
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                20,
+                        ElevatedButton(
+                          onPressed: () {
+                            // print("login in buttom clicked");
+                            if (nameTextEditingController.text.length < 3) {
+                              displayToastMessage(
+                                  "Name must be of 3 character", context);
+                            } else if (!emailTextEditingController.text
+                                .contains("@")) {
+                              displayToastMessage(
+                                  "email address isn't valild", context);
+                            } else if (phoneTextEditingController
+                                .text.isEmpty) {
+                              displayToastMessage(
+                                  "Phone Number is necessity", context);
+                            } else if (passwordTextEditingController
+                                    .text.length <
+                                6) {
+                              displayToastMessage(
+                                  "Password must be 6 character", context);
+                            } else {
+                              registerNewUser(context);
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                  20,
+                                ),
+                              )),
+                          child: const SizedBox(
+                            height: 50.0,
+                            child: Center(
+                              child: Text(
+                                "Create Account",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 30.0,
+                                    fontFamily: "Brand Bold"),
                               ),
-                            )),
-                        child: const SizedBox(
-                          height: 50.0,
-                          child: Center(
-                            child: Text(
-                              "Create Account",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 30.0,
-                                  fontFamily: "Brand Bold"),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                // TextButton(
-                //   onPressed: () {
-                //     Navigator.pushNamedAndRemoveUntil(
-                //         context, LoginScreen.idScreen, (route) => false);
-                //   },
-                //   child: const Text(
-                //     "Already Have account? Login Here",
-                //   ),
-                // ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

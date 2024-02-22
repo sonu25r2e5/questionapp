@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class subject {
+class Subject {
   String settings;
   IconData icondata;
-  subject(this.settings, this.icondata);
+  Subject(this.settings, this.icondata);
 }
 
 class Setting extends StatelessWidget {
@@ -11,19 +11,19 @@ class Setting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<subject> listdata = [
-      subject("Account", Icons.account_circle),
-      subject("Downloads", Icons.download),
-      subject("Purchase and memberships", Icons.shop),
-      subject("Time watched", Icons.timelapse),
-      subject("Help", Icons.help),
+    List<Subject> listdata = [
+      Subject("Account", Icons.account_circle),
+      Subject("Downloads", Icons.download),
+      Subject("Purchase & memberships", Icons.shop),
+      Subject("Time watched", Icons.timelapse),
+      Subject("Help", Icons.help),
     ];
 
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
         Colors.white.withOpacity(0.6),
-        Colors.green.withOpacity(0.2),
+        Colors.white24.withOpacity(0.2),
       ])),
       height: MediaQuery.of(context).size.height * 0.9,
       child: Column(

@@ -7,10 +7,10 @@ import 'package:studentapp/apirequest/models/channel_models.dart';
 import 'package:studentapp/apirequest/models/video_models.dart';
 import 'package:studentapp/apirequest/utilies/keys.dart';
 
-class apiService {
-  apiService._instantiate();
+class ApiService {
+  ApiService._instantiate();
 
-  static final apiService instance = apiService._instantiate();
+  static final ApiService instance = ApiService._instantiate();
   final String _baseUrl = 'www.googleapis.com';
   String _nextPageToken = '';
 
@@ -78,9 +78,11 @@ class apiService {
 
       List<Video> videos = [];
       for (var json in videosJson) {
-        videos.add(Video.fromMap(
-          json['snippet'],
-        ));
+        videos.add(
+          Video.fromMap(
+            json['snippet'],
+          ),
+        );
       }
       return videos;
     } else {

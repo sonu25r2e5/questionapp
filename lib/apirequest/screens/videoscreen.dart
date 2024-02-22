@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoScreen extends StatefulWidget {
-  final String id;
-  const VideoScreen({required this.id, super.key});
+  var id;
+  VideoScreen({required this.id, super.key});
 
   @override
   State<VideoScreen> createState() => _VideoScreenState();
@@ -33,7 +33,7 @@ class _VideoScreenState extends State<VideoScreen> {
         controller: _controller,
         showVideoProgressIndicator: true,
         onReady: () {
-          print('Player is ready baby');
+          // print('Player is ready baby');
         },
       ),
     );

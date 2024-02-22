@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studentapp/podomora%20app/pwidgets/progress.dart';
 import 'package:studentapp/podomora%20app/pwidgets/timecontroller.dart';
-import 'package:studentapp/podomora%20app/pwidgets/timerCard.dart';
+import 'package:studentapp/podomora%20app/pwidgets/timer_card.dart';
 import 'package:studentapp/podomora%20app/pwidgets/timerservice.dart';
 import 'package:studentapp/podomora%20app/timeroptions.dart';
 import '../podomora app/putils.dart';
