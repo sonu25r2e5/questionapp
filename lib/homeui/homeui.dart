@@ -93,6 +93,7 @@ class _HomeUiState extends State<HomeUi> {
               ),
             ),
           ),
+          // main screen of the app is detail .
           const Details(),
           Positioned(
             top: screenHeight * 0.08,

@@ -35,15 +35,6 @@ class Details extends StatelessWidget {
         ),
         height: screenHeight * 2,
         width: screenWidth * 0.9,
-        // decoration: const BoxDecoration(
-        //   // color: Colors.amberAccent,
-        //   gradient: LinearGradient(
-        //     colors: [
-        //       Colors.grey,
-        //       Colors.blue,
-        //     ],
-        //   ),
-        // ),
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: BackdropFilter(
