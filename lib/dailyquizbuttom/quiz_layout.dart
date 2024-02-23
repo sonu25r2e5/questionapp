@@ -31,22 +31,7 @@ class _QuizLayoutState extends State<QuizLayout> {
    final answersList = <String?>[];
 
 
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   Timer.periodic(const Duration(seconds: 1), (_) {
-  //     if (secondsRemaining == 0) {
-  //       return;
-  //     }
-  //   });
-  //   setState(() {
-  //     secondsRemaining -= 1;
-  //     progressFraction = (totalSeconds - secondsRemaining) / totalSeconds;
-  //     percentage = (progressFraction * 100).floor();
-  //   });
-  //   super.initState();
-  // }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -95,29 +80,12 @@ class _QuizLayoutState extends State<QuizLayout> {
                           padding: const EdgeInsets.all(12.0),
                           child: Column(
                             children: [
-                              Stack(
-                                children: [
-                                  Positioned(
-                                    top: screenHeight * 0.01,
-                                    right: screenWidth * 0.001,
-                                    left: screenWidth * 0.002,
-                                    bottom: screenHeight * 0.01,
-                                    child: Text(
-                                      (current + 1).toString(),
-                                      textAlign: TextAlign.center,
+                              
+                              Text(
+                                       (current + 1).toString(),
+                                       textAlign: TextAlign.center,
                                     ),
-                                  ),
-                                  TweenAnimationBuilder<double>(
-                                    tween: Tween<double>(begin: 0, end: 1),
-                                    duration:
-                                        const Duration(milliseconds: 3500),
-                                    builder: (context, value, _) =>
-                                        CircularProgressIndicator(
-                                      value: progressFraction,
-                                    ),
-                                  ),
-                                ],
-                              ),
+
                               Expanded(
                                   child: QuestionApp(
                                 student: students[current].data(),
@@ -125,6 +93,7 @@ class _QuizLayoutState extends State<QuizLayout> {
                                   answersList[current] = answer;
                                 },
                               )),
+
                               if (current < total - 1)
                                 ElevatedButton(
                                   onPressed: () {
@@ -135,6 +104,12 @@ class _QuizLayoutState extends State<QuizLayout> {
                                     setQuestion(() {
                                       current++;
                                     });
+
+                                  if (current == total){
+                                    // print(scrore);
+                                  }
+
+
                                   },
                                   child: const Text('Next'),
                                 ),

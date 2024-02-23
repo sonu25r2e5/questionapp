@@ -21,6 +21,12 @@ class QuestionApp extends StatefulWidget {
 
 class _QuestionAppState extends State<QuestionApp> {
    late final List<bool> isCheckedList;
+  int score = 0; 
+  //checked answer
+   
+  
+
+
 
    @override
   void initState() {
@@ -30,7 +36,17 @@ class _QuestionAppState extends State<QuestionApp> {
 
   @override
   Widget build(BuildContext context) {
-    // Query dbRef = FirebaseDatabase.instance.ref().child('Students');
+    // Query dbRef = FirebaseDatabase.instance.ref().child('Students')
+    //;
+     void checkAnswer(context, index, String correctAnswer){
+    String correctAnswer = widget.student.answer[index];
+    if(correctAnswer == widget.student.answer[index]) {
+      score = score + 5;
+
+    }
+    print(score);
+
+   }
 
     return Column(
       // crossAxisAlignment: CrossAxisAlignment.center,
@@ -44,6 +60,8 @@ class _QuestionAppState extends State<QuestionApp> {
             itemCount: widget.student.answer.length,
             itemBuilder: (context, index) {
               final answer = widget.student.answer[index];
+              final correctAnswer = widget.student.correct_answer;
+              // final correct_answer = widget.student.
               final isChecked = isCheckedList[index];
               return Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -69,7 +87,9 @@ class _QuestionAppState extends State<QuestionApp> {
                             if(value){
                               widget.onClick(answer);
                             }
+                            checkAnswer(context, index, correctAnswer);
                           setState(() {
+
                           });
                         },),
                        ],
