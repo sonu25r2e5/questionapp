@@ -55,6 +55,8 @@ class _HomeUiState extends State<HomeUi> {
 
                     onTap: () {
                       Navigator.of(context).pushNamed(tee[index].routeName);
+                     
+                    
                     },
                     title: Text(tee[index].text),
                     contentPadding: const EdgeInsets.all(2),

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:studentapp/bottomiconbarwidgets/course.dart';
 import 'package:studentapp/dailyquizbuttom/quiz_layout.dart';
 import 'package:studentapp/dailyquizbuttom/subjective.dart';
@@ -56,14 +57,12 @@ class Details extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: SizedBox(
-                      height: screenHeight * 0.25,
+                      height: screenHeight * 0.3,
                       width: screenWidth * 0.9,
                       child: Column(
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // SizedBox(
-                          //   height: screenHeight * 0.1,
-                          // ),
+                        
                           Column(
                             children: [
                               Text(
@@ -73,44 +72,40 @@ class Details extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(
-                                height: screenHeight * 0.03,
+                                height: screenHeight * 0.02,
                               ),
                               const Text(
-                                'Testss',
+                                'Tests',
                                 style: TextStyle(
-                                  fontSize: 60,
+                                  fontSize: 90,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ],
                           ),
                           SizedBox(
-                            height: screenHeight * 0.02,
+                            height: screenHeight * 0.01,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext) =>
-                                          const Subjective(),
-                                    ),
-                                  );
+                              
+                                  Get.to( ()=> const Subjective());
                                 },
                                 child: const Text('Subjective'),
                               ),
                               ElevatedButton(
                                 onPressed: () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          const QuizLayout(),
-                                    ),
-                                  );
+                                  // Navigator.pushReplacement(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (BuildContext context) =>
+                                  //         const QuizLayout(),
+                                  //   ),
+                                  // );
+                                  Get.off(()=>const QuizLayout());
                                 },
                                 child: const Text('Daily'),
                               ),
@@ -121,80 +116,8 @@ class Details extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  height: screenHeight * 0.06,
-                ),
-                BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: 0.2,
-                    sigmaY: 0.1,
-                  ),
-                  child: Container(
-                    height: screenHeight * 0.35,
-                    width: screenWidth * 0.9,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.white.withOpacity(.9),
-                          Colors.white24.withOpacity(0.6),
-                        ],
-                      ),
-                    ),
-                    child: GridView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      // scrollDirection: Axis.vertical,
-                      itemCount: 2,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-
-                        mainAxisExtent: screenWidth * 0.6,
-                        crossAxisSpacing: 22,
-                        childAspectRatio: 1 / 3,
-
-                        // crossAxisSpacing: 200,
-                      ),
-                      itemBuilder: (BuildContext context, index) {
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            SizedBox(
-                              height: screenHeight * .1,
-                              width: screenWidth * 0.5,
-                              child: CircleAvatar(
-                                child: Image(
-                                  image: AssetImage(
-                                    subette[index + 1].imag,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            // const Divider(),
-                            Text(
-                              subette[index + 1].subject,
-                              style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              subette[index + 1].description,
-                              style: const TextStyle(
-                                fontSize: 10.9,
-                              ),
-                            ),
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text('Learn more'),
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                )
+                
+                
               ],
             ),
           ),

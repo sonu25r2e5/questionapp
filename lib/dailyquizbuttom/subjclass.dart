@@ -6,9 +6,9 @@ class Questionsubjective {
   // // String list; 
   // Questionsubjective(this.subject);
 
-TextEditingController _searchController = TextEditingController();
+final TextEditingController _searchController = TextEditingController();
 
-  List <String> _allSubjects = [
+ final  List <String> _allSubjects = [
 
     'engineering Economics',
     'dBMs',

@@ -17,4 +17,6 @@ class MyDatabase {
 
   Stream<QuerySnapshot<StudentApp>> get questionsStream =>
       reference.snapshots();
+  Future<QuerySnapshot<StudentApp>> get questionsFuture =>
+      reference.get();
 }

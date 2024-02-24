@@ -23,7 +23,7 @@ class ProgressWidget extends StatelessWidget {
               ),
             ),
             Text(
-              "${provider.goals}//12",
+              "${provider.goals}/12",
               style: textStyle(
                 30,
                 Colors.black,

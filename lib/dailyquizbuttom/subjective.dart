@@ -11,9 +11,9 @@ class Subjective extends StatefulWidget {
 
 class _SubjectiveState extends State<Subjective> {
 
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
-  List <String> _allSubjects = [
+ final  List <String> _allSubjects = [
 
     'engineering Economics',
     'dBMs',

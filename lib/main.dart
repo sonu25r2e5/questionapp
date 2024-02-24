@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:studentapp/homeui/homeui.dart';
@@ -29,13 +30,18 @@ void main() async {
 
 DatabaseReference usersRef = FirebaseDatabase.instance.ref().child("users");
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -43,6 +49,17 @@ class MyApp extends StatelessWidget {
           seedColor: const Color.fromARGB(255, 155, 22, 137),
         ),
       ),
+
+      initialRoute: '/',
+
+      // getPages: [
+      //   GetPage(name: '/', page: () => const MyHomePage(title: 'Studentapp'),),
+      //   GetPage(name: '/planner', page: () => const Notepage() ,),
+      //   GetPage(name: '/timer', page: () => const Planner() ,),
+      //   GetPage(name: '/timer', page: () => const PodomoraApp() ,),
+      //   GetPage(name: '/pdf', page: () => const ImageToPdfList() ,),
+      // ],
+
       routes: {
         '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
         '/note': (context) => const Notepage(),
